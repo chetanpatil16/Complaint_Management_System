@@ -42,7 +42,9 @@ public class ComplaintServiceImpl implements ComplaintService {
        if(complaintStatusUpdateDTO.getStatus() == Status.RESOLVED) {
            complaint.setResolvedOn(LocalDateTime.now());
 
-           complaint.setDurationInHours(Duration.between(complaint.getRaisedOn(), complaint.getResolvedOn()).toHours());
+           long Hours = Duration.between(complaint.getRaisedOn(), complaint.getResolvedOn()).toHours();
+           complaint.setDurationInHours(Hours);
+
        }
 
 //       if(complaintStatusUpdateDTO.getStatus()== Status.IN_PROGRESS || complaintStatusUpdateDTO.getStatus() == Status.OPEN){
