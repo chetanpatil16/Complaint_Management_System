@@ -10,6 +10,7 @@ import com.milkfirst.service.ComplaintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -38,8 +39,10 @@ public class ComplaintServiceImpl implements ComplaintService {
 
        complaint.setStaus(complaintStatusUpdateDTO.getStatus());
 
-       if(complaintStatusUpdateDTO.getStatus() == Status.RESOLVED){
-            complaint.setResolvedOn(LocalDateTime.now());
+       if(complaintStatusUpdateDTO.getStatus() == Status.RESOLVED) {
+           complaint.setResolvedOn(LocalDateTime.now());
+
+           complaint.setDurationInHours(Duration.between(complaint.getRaisedOn(), complaint.getResolvedOn()).toHours());
        }
 
 //       if(complaintStatusUpdateDTO.getStatus()== Status.IN_PROGRESS || complaintStatusUpdateDTO.getStatus() == Status.OPEN){

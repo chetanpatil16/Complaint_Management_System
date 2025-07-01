@@ -24,6 +24,8 @@ public class Complaint {
 
     private LocalDateTime resolvedOn;
 
+    private long durationInHours;
+
     public int getComplaintId() {
         return complaintId;
     }
@@ -72,15 +74,32 @@ public class Complaint {
         this.status = staus;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public long getDurationInHours() {
+        return durationInHours;
+    }
+
+    public void setDurationInHours(long durationInHours) {
+        this.durationInHours = durationInHours;
+    }
+
     @Override
     public String toString() {
         return "Complaint{" +
                 "complaintId=" + complaintId +
                 ", customerName='" + customerName + '\'' +
                 ", issueDescription='" + issueDescription + '\'' +
-                ", staus=" + status +
+                ", status=" + status +
                 ", raisedOn=" + raisedOn +
                 ", resolvedOn=" + resolvedOn +
+                ", durationInHours=" + durationInHours +
                 '}';
     }
 }
